@@ -1,26 +1,480 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --theme-bg-1: #1a1a2e;
+  --theme-bg-2: #16213e;
+  --theme-accent: rgb(110, 193, 228);
+  --banner-tint-1: rgba(26, 26, 46, 0.78);
+  --banner-tint-2: rgba(22, 33, 62, 0.78);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* =========================
+   Global resets & safety
+   ========================= */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #ffffff;
+  font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+main {
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   Typography defaults (only for non-hero pages)
+   ========================= */
+
+h1 {
+  font-size: clamp(1.875rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+p {
+  color: #d4d4d8; /* zinc-300 */
+  line-height: 1.75;
+}
+
+/* =========================
+   Navbar
+   ========================= */
+
+.navbar {
+  background-color: rgba(26, 26, 46, 0.95);
+  border-bottom: 1px solid rgba(110, 193, 228, 0.3);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(110, 193, 228);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar-links a {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.navbar-links a:hover {
+  color: rgb(110, 193, 228);
+}
+
+.navbar-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-external-iconWrap {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+
+.navbar-external-icon {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-external-iconDefault {
+  opacity: 1;
+}
+
+.navbar-external-iconHover {
+  opacity: 0;
+}
+
+.navbar-external:hover .navbar-external-iconDefault {
+  opacity: 0;
+}
+
+.navbar-external:hover .navbar-external-iconHover {
+  opacity: 1;
+}
+
+/* =========================
+   Links
+   ========================= */
+
+a {
+  font-size: 1.5rem;
+  color: #D9D9D9; /* sky-400 */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #7dd3fc; /* sky-300 */
+}
+
+/* =========================
+   Media safety
+   ========================= */
+
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   Optional: nicer scrollbars
+   ========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* =========================
+   Detail Pages (Projects & Games)
+   ========================= */
+
+.detail-page {
+  min-height: 100vh;
+  padding: 4rem 1.5rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.detail-container {
+  margin: 0 auto;
+  max-width: 56rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: rgb(110, 193, 228);
+  text-decoration: none;
+  transition: color 300ms;
+  font-size: 1rem;
+}
+
+.back-link:hover {
+  color: #ffffff;
+}
+
+.detail-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: rgb(110, 193, 228);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tech-badge {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgba(110, 193, 228, 0.1);
+  color: rgb(110, 193, 228);
+  border-radius: 9999px;
+  border: 1px solid rgb(110, 193, 228);
+}
+
+.store-badges-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.store-badge-link {
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.store-badge-link:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.store-badge {
+  height: auto;
+  display: block;
+}
+
+.store-link-wrapper {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.store-link-button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(110, 193, 228, 0.12);
+  border: 1px solid rgba(110, 193, 228, 0.45);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(110, 193, 228, 0.15);
+}
+
+.store-link-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(110, 193, 228, 0.22);
+  background: rgba(110, 193, 228, 0.18);
+}
+
+/* =========================
+   Installer Badges
+   ========================= */
+.installer-wrapper {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.installer-badge-link {
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  color: rgb(110, 193, 228);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.installer-badge-link:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.installer-badge-link h3 {
+  margin: 0 0 0.75rem 0;
+  color: rgb(110, 193, 228);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.installer-badge {
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   Role & Scope Section
+   ========================= */
+
+.role-scope {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(110, 193, 228, 0.25);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.role-scope h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(110, 193, 228);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.role-scope-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.role-scope-item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.role-scope-label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  min-width: 90px;
+}
+
+.role-scope-value {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.status-shipped,
+.status-released,
+.status-shipped-and-live {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.status-in-development {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .role-scope-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   Detail Content
+   ========================= */
+
+.detail-image-wrapper {
+  width: 100%;
+  margin-bottom: 3rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(110, 193, 228, 0.25);
+  box-shadow: 0 12px 30px rgba(110, 193, 228, 0.12);
+}
+
+.detail-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.detail-content {
+  align-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.75;
+}
+
+.detail-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(110, 193, 228);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.detail-content p {
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+/* =========================
+   Contribution Section
+   ========================= */
+   
+.contribution-section {
+  margin-top: 2rem;
+}
+
+.contribution-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: rgb(110, 193, 228);
+}
+
+.contribution-section ul {
+  list-style: disc;
+  padding-left: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.contribution-section li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================
+   Store Badges
+   ========================= */
+.store-badge-wrapper {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.store-badge-link {
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.store-badge-link:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.store-badge {
+  height: auto;
+  display: block;
 }

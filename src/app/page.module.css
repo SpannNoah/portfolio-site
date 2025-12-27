@@ -1,0 +1,167 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/images/portfolioBackground.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--banner-tint-1) 0%, var(--banner-tint-2) 100%);
+  backdrop-filter: blur(2px);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--theme-accent);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  letter-spacing: -0.02em;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button {
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--theme-accent);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--theme-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background: var(--theme-accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(110, 193, 228, 0.3);
+}
+
+.aboutSection {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+}
+
+.aboutContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.profileImageContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.profileImage {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgb(110, 193, 228);
+  box-shadow: 0 8px 20px rgba(110, 193, 228, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profileImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(110, 193, 228, 0.5);
+}
+
+.aboutTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  color: rgb(110, 193, 228);
+  letter-spacing: -0.02em;
+}
+
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.aboutContent p {
+  margin: 0;
+  text-align: left;
+}
+
+.linkedinContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.linkedinButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: rgb(110, 193, 228);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid rgb(110, 193, 228);
+}
+
+.linkedinButton:hover {
+  background:rgb(110, 193, 228);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(110, 193, 228, 0.3);
+}
+
+@media (max-width: 768px) {
+  .aboutSection {
+    padding: 3rem 1.5rem;
+  }
+  
+  .aboutContent {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}

@@ -1,0 +1,85 @@
+.main {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.banner {
+  position: relative;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/images/portfolioBackground.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--banner-tint-1) 0%, var(--banner-tint-2) 100%);
+  backdrop-filter: blur(2px);
+}
+
+.bannerContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  max-width: 1000px;
+}
+
+.bannerTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--theme-accent);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.12em;
+}
+
+.bannerSubtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.categorySection {
+  margin-bottom: 4rem;
+}
+
+.categoryHeader {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(110, 193, 228);
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+}
+
+.gamesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+  
+  .categoryHeader {
+    font-size: 1.25rem;
+  }
+}
