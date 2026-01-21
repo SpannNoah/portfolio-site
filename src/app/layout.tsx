@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
+import { Analytics } from "@vercel/analytics/next";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -58,7 +59,7 @@ export default function RootLayout({
           </div>
         </nav>
         <main>{children}</main>
-
+        <Analytics />
         <footer>
           ©{new Date().getFullYear()} Noah Spann
         </footer>
