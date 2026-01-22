@@ -4,13 +4,13 @@ This is my personal portfolio website, built to showcase my work, experience, an
 
 ### Tech Stack
 
-Framework: Next.js
+**Framework:** Next.js
 
-Language: TypeScript
+**Language:** TypeScript
 
-Styling: CSS Modules / modern CSS
+**Styling:** CSS Modules / modern CSS
 
-Deployment: Vercel
+**Deployment:** Vercel
 
 ### Contact
 
