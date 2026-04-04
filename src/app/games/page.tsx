@@ -15,7 +15,6 @@ export default function Games()
       </div>
 
       <div className={styles.container}>
-        {/* Professional Games Section */}
         <section className={styles.categorySection}>
           <h2 className={styles.categoryHeader}>Professional Games</h2>
           <div className={styles.gamesGrid}>
@@ -33,7 +32,6 @@ export default function Games()
           </div>
         </section>
 
-        {/* Personal Games Section */}
         <section className={styles.categorySection}>
           <h2 className={styles.categoryHeader}>Personal Games</h2>
           <div className={styles.gamesGrid}>

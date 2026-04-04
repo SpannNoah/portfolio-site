@@ -21,10 +21,12 @@ export default function ProjectCard({
         <Link href={`/projects/${slug}`} className={styles.projectLink}>
             <div className={`${styles.projectCard} ${isReversed ? styles.reversed : ''}`}>
                 <div className={styles.imageContainer}>
-                    <img 
-                    src={image} 
-                    alt={title} 
+                    <img
+                    src={image}
+                    alt={title}
                     className={styles.projectImage}
+                    loading="lazy"
+                    decoding="async"
                     />
                 </div>
                 <div className={styles.infoContainer}>

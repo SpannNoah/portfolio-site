@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './GameCard.module.css';
 
 type Props = {
@@ -22,10 +23,13 @@ export default function GameCard({
         <Link href={`/games/${slug}`} className={styles.gameLink}>
             <div className={`${styles.gameCard} ${isReversed ? styles.reversed : ''}`}>
                 <div className={styles.imageContainer}>
-                    <img
+                    <Image
                         className={styles.gameImage}
                         src={image}
                         alt={title}
+                        width={864}
+                        height={280}
+                        sizes="(max-width: 768px) 100vw, 45vw"
                     />
                 </div>
                 <div className={styles.infoContainer}>

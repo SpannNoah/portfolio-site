@@ -33,10 +33,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {project.image && (
           <div className="detail-image-wrapper">
-            <img 
-              src={project.image} 
+            <img
+              src={project.image}
               alt={project.title}
               className="detail-image"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         )}

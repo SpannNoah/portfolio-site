@@ -5,10 +5,7 @@ export default function Home() {
   return (
     <>
       <div className={styles.hero}>
-        {/* Background overlay */}
         <div className={styles.overlay} />
-        
-        {/* Hero Content */}
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
             Noah Spann
@@ -17,7 +14,6 @@ export default function Home() {
             Gameplay Programmer & Designer
           </p>
           
-          {/* Navigation Buttons */}
           <div className={styles.buttonGroup}>
             <Link href="/games" className={styles.button}>
               GAMES
@@ -29,14 +25,15 @@ export default function Home() {
         </div>
       </div>
 
-      {/* About Me Section */}
       <section id="about" className={styles.aboutSection}>
         <div className={styles.aboutContainer}>
           <div className={styles.profileImageContainer}>
-            <img 
-              src="/images/profile.png" 
-              alt="Noah Spann" 
+            <img
+              src="/images/profile.webp"
+              alt="Noah Spann"
               className={styles.profileImage}
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <h2 className={styles.aboutTitle}>About Me</h2>

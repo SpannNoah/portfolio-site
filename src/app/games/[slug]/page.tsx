@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { gamesData } from '../../data/games';
+import ScreenshotGallery from '../../components/ScreenshotGallery';
+import SystemBreakdownSection from '../../components/SystemBreakdown';
 
 const StoreBadge = ({ storeType, storeLink }: { storeType: 'appstore' | 'itch' | 'steam' | 'googleplay', storeLink: string }) => {
   const badges = {
@@ -34,12 +36,14 @@ const StoreBadge = ({ storeType, storeLink }: { storeType: 'appstore' | 'itch' |
 
   return (
     <a href={storeLink} target="_blank" rel="noopener noreferrer" className="store-badge-link">
-      <img 
-        src={badge.src} 
+      <img
+        src={badge.src}
         alt={badge.alt}
         width={badge.width}
         height={badge.height}
         className="store-badge"
+        loading="lazy"
+        decoding="async"
       />
     </a>
   );
@@ -76,10 +80,14 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
 
         {game.image && (
           <div className="detail-image-wrapper">
-            <img 
-              src={game.image} 
+            <Image
+              src={game.image}
               alt={game.title}
               className="detail-image"
+              width={896}
+              height={504}
+              sizes="(max-width: 896px) 100vw, 896px"
+              priority
               />
           </div>
         )}
@@ -131,10 +139,12 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
           <div className="installer-wrapper">
             <a href={game.installer} className="installer-badge-link" download>
               <h3>Download Installer</h3>
-              <img 
-                src={game.installerBadge}
+              <img
+                src={game.installerBadge ?? undefined}
                 alt="Download Installer"
                 width={155}
+                loading="lazy"
+                decoding="async"
                 height={40}
                 className="installer-badge"
               />
@@ -149,7 +159,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
 
       {game.contributions && game.contributions.length > 0 && (
         <div className="detail-content">
-          <h2>My Contributions</h2>          
+          <h2>My Contributions</h2>
           {game.contributions.map((section, index) => (
             <div key={index} className="contribution-section">
               <h3>{section.category}</h3>
@@ -162,6 +172,21 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
           ))}
         </div>
       )}
+
+        {game.screenshots && game.screenshots.length > 0 && (
+          <div className="detail-content">
+            <h2>Screenshots</h2>
+            <ScreenshotGallery screenshots={game.screenshots} />
+          </div>
+        )}
+
+        {game.systemBreakdowns && game.systemBreakdowns.length > 0 && (
+          <div className="detail-content">
+            {game.systemBreakdowns.map((breakdown, index) => (
+              <SystemBreakdownSection key={index} breakdown={breakdown} />
+            ))}
+          </div>
+        )}
       </div>
 
 

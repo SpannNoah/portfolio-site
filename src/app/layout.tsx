@@ -47,11 +47,15 @@ export default function RootLayout({
                     src="/images/externallink.png"
                     alt=""
                     className="navbar-external-icon navbar-external-iconDefault"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <img
                     src="/images/externallink-highlighted.png"
                     alt=""
                     className="navbar-external-icon navbar-external-iconHover"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </span>
               </a>

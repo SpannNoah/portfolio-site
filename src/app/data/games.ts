@@ -4,20 +4,62 @@ export interface Game {
     slug: string;
     dateRange: string;
     technologies: string[];
-    installer?: string; // Optional installer download link
+    installer?: string;
+}
+
+export interface Screenshot {
+    src: string;
+    alt: string;
+    caption?: string;
+}
+
+export interface SystemHighlight {
+    title: string;
+    summary: string;
+    details?: string[];
+}
+
+export interface SystemBreakdown {
+    heading: string;
+    overview: string;
+    highlights: SystemHighlight[];
+}
+
+export interface GameDetail {
+    title: string;
+    tech: string;
+    description: string;
+    image: string;
+    stores: { type: 'appstore' | 'itch' | 'steam' | 'googleplay'; link: string }[] | null;
+    installer: string | null;
+    installerBadge: string | null;
+    fullDescription: string;
+    roleScope: {
+        role: string;
+        teamSize: string;
+        platform: string;
+        duration: string;
+        status: string;
+    };
+    contributions: {
+        category: string;
+        items: string[];
+    }[];
+    screenshots?: Screenshot[];
+    systemBreakdowns?: SystemBreakdown[];
 }
 
 export const professionalGames: Game[] = [
     {
         title: "Raskulls",
-        image: "/images/RaskullsBanner.png",
+        image: "/images/RaskullsBanner.webp",
         slug: "raskulls",
         dateRange: "2025 - Current",
         technologies: ["UNITY", "C#", "Photon Fusion"]
     },
     {
         title: "Fruit Ninja Classic+",
-        image: "/images/FruitNinjaClassic.png",
+        image: "/images/FruitNinjaClassic.webp",
         slug: "fruit-ninja-classic",
         dateRange: "2022 - 2025",
         technologies: ["UNITY", "C#"]
@@ -27,14 +69,21 @@ export const professionalGames: Game[] = [
 export const personalGames: Game[] = [
     {
         title: "Renegade 17",
-        image: "/images/Renegade17Banner.png",
+        image: "/images/Renegade17Banner.webp",
         slug: "renegade-17",
         dateRange: "2022",
         technologies: ["Unreal Engine", "Blueprints"]
     },
     {
+        title: "Forgotten Arsenal",
+        image: "/images/ForgottenArsenalBanner.webp",
+        slug: "forgotten-arsenal",
+        dateRange: "2025",
+        technologies: ["UNITY", "C#"]
+    },
+    {
         title: "Dr. Malware",
-        image: "/images/DrMalware.png",
+        image: "/images/DrMalware.webp",
         slug: "dr-malware",
         dateRange: "2025",
         technologies: ["Vulkan", "C++", "EnTT", "IMGUI"],
@@ -42,26 +91,19 @@ export const personalGames: Game[] = [
     },
     {
         title: "Fluxuate",
-        image: "/images/FluxtuateBanner.png",
+        image: "/images/FluxtuateBanner.webp",
         slug: "fluxuate",
         dateRange: "2025",
         technologies: ["Unreal Engine", "C++"]
     },
-    {
-        title: "Forgotten Arsenal",
-        image: "/images/ForgottenArsenalBanner.png",
-        slug: "forgotten-arsenal",
-        dateRange: "2025",
-        technologies: ["UNITY", "C#"]
-    }
 ];
 
-export const gamesData = {
+export const gamesData: Record<string, GameDetail> = {
   'fruit-ninja-classic': {
     title: 'Fruit Ninja Classic+',
     tech: 'Unity, C#',
     description: 'A remake of the classic mobile game Fruit Ninja with added features and enhancements.',
-    image: '/images/FruitNinjaClassic.png',
+    image: '/images/FruitNinjaClassic.webp',
     stores: [
       { type: 'appstore' as const, link: 'https://apps.apple.com/us/app/fruit-ninja-classic/id362949845?itscg=30200&itsct=apps_box_link&mttnsubad=362949845' },
       { type: 'googleplay' as const, link: 'https://play.google.com/store/apps/details?id=com.halfbrick.fruitninja&pcampaignid=web_share'}
@@ -119,7 +161,7 @@ export const gamesData = {
     title: 'Raskulls',
     tech: 'Unity, C#, Photon Fusion',
     description: 'A remake of the arcade-style game Raskulls, reimagined to fit mobile platforms.',
-    image: '/images/RaskullsBanner.png',
+    image: '/images/RaskullsBanner.webp',
     stores: [],
     installer: null,
     installerBadge: null,
@@ -138,7 +180,7 @@ export const gamesData = {
             [
             'Led the porting of core gameplay systems from a custom engine to Unity, preserving game feel and behavior.',
             'Reimplemented core gameplay logic in C#',
-            'Refactored gameplay code to align with Unity’s systems, improving maintainability and iteration speed.'
+            'Refactored gameplay code to align with Unity\'s systems, improving maintainability and iteration speed.'
             ]
       },
       { 
@@ -167,7 +209,7 @@ export const gamesData = {
     title: 'Renegade 17',
     tech: 'Unreal Engine, Blueprints',
     description: 'A fast-paced FPS game built in Unreal Engine focusing on phsyics puzzles and singleplayer combat.',
-    image: '/images/Renegade17Banner.png',
+    image: '/images/Renegade17Banner.webp',
     stores: [
       { type: 'itch' as const, link: 'https://kitsuneneko29.itch.io/renegade17' }
     ],
@@ -195,7 +237,7 @@ export const gamesData = {
             category: 'Level Design & Player Experience',
             items:
             [
-            'Designed and implemented the level “High Rise” from concept to playable final.',
+            'Designed and implemented the level "High Rise" from concept to playable final.',
             'Applied IPM (Introduce, Practice, Master) methodology to teach and reinforce gameplay mechanics.',
             'Developed level layouts using 2D maps, beat charts, mood boards, and blockmesh passes.',
             'Balanced combat encounters, traversal, and sightlines to support intended player flow.',
@@ -209,7 +251,7 @@ export const gamesData = {
     title: 'Fluxuate',
     tech: 'Unreal Engine, C++, Blueprints',
     description: 'A physics based hack-and-slash in early development.',
-    image: '/images/FluxtuateBanner.png',
+    image: '/images/FluxtuateBanner.webp',
     stores: [
       {type: 'itch' as const, link: 'https://pocketchangegames2512.itch.io/fluxuate' }
     ],
@@ -238,7 +280,7 @@ export const gamesData = {
             category: 'AI, Navigation & Animation',
             items:
             [
-            'Implemented enemy AI navigation using Unreal’s NavMesh system, enabling reliable pathfinding and world traversal.',
+            'Implemented enemy AI navigation using Unreal\'s NavMesh system, enabling reliable pathfinding and world traversal.',
             'Authored and updated enemy animation blueprints, including idle, movement, and attack states driven by velocity and direction variables.',
             'Integrated player and enemy skeletal meshes and animation assets, ensuring correct retargeting and gameplay compatibility.',
             'Updated animation systems to support weapon-based combat (sword integration).'
@@ -277,13 +319,13 @@ export const gamesData = {
     title: 'Forgotten Arsenal',
     tech: 'Unity, C#',
     description: "A first-person shooter focused on elemental weapons and fast-paced combat.",
-    image: '/images/ForgottenArsenalBanner.png',
+    image: '/images/ForgottenArsenalBanner.webp',
     stores: [
       { type: 'itch' as const, link: 'https://noahspann.itch.io/forgotten-arsenal' }
     ],
     installer: null,
     installerBadge: null,
-    fullDescription: 'Forgotten Arsenal is a first-person shooter that emphasizes fast-paced combat and elemental weaponry. Developed in Unity, the game features a variety of ammo types with unique effects.',
+    fullDescription: 'Forgotten Arsenal is a first-person shooter built around a modular weapon system spanning 16 scripts across 4 architectural layers. The core design centers on a dual-ammo cartridge mechanic, where each weapon holds two elemental ammo types fired independently via left and right mouse buttons. Ammo behaviors are implemented as pluggable strategies through an IAmmoEffect interface, enabling effects like chain lightning and fire damage without modifying the core weapon code. Weapon stats and ammo configurations are driven by ScriptableObjects, keeping data separate from behavior for designer-friendly iteration.',
     roleScope:{
         role: 'Gameplay Programmer',
         teamSize: '3',
@@ -291,8 +333,45 @@ export const gamesData = {
         duration: '1 month',
         status: 'Released',
     },
+    screenshots: [],
+    systemBreakdowns: [
+      {
+        heading: 'Modular Weapon & Ammo System',
+        overview: 'A data-driven weapon system for a first-person shooter built in Unity, featuring a dual-ammo cartridge mechanic where left and right mouse buttons fire different elemental ammo types simultaneously. The system is designed around ScriptableObjects and interfaces for maximum extensibility.',
+        highlights: [
+          {
+            title: 'Dual-Ammo Cartridge',
+            summary: 'Players load two different ammo types into left and right slots of a cartridge. Left click fires one element, right click fires the other, and holding both triggers a combined dual-fire mode. Ammo types include Basic, Lightning, Fire, and Ice, each with unique on-hit effects. Players swap ammo loadouts mid-game through a drag-and-drop UI built on Unity\'s EventSystem (IDragHandler, IBeginDragHandler, IEndDragHandler).',
+          },
+          {
+            title: 'ScriptableObject Data Architecture',
+            summary: 'Weapon stats (gunStats) and ammo configurations (AmmoTypeConfig) are ScriptableObjects, separating data from behavior. Designers can create new weapons or ammo types entirely in the Unity editor with no code changes required. Each ammo config defines its damage type, base damage, whether it\'s hitscan or projectile, VFX prefabs, SFX, and available upgrades.',
+          },
+          {
+            title: 'Pluggable Ammo Effects (Strategy Pattern)',
+            summary: 'An IAmmoEffect interface allows each ammo type to carry a unique on-hit behavior. The Gun and Projectile classes check for and execute these effects without knowing their implementation. New effects are added by creating a MonoBehaviour that implements IAmmoEffect and assigning it to an AmmoTypeConfig asset, requiring zero modification to existing firing code.',
+          },
+          {
+            title: 'Chain Lightning (Recursive Algorithm)',
+            summary: 'The LightningEffect implements IAmmoEffect with a recursive chain-lightning algorithm. On hit, it uses Physics.OverlapSphere to find nearby enemies, selects the closest unchained target, applies damage, and recurses. A HashSet<Collider> tracks already-hit targets for O(1) deduplication. Each chain link also triggers the ammo\'s current upgrade effect (e.g., LightningUpgradeStun stops NavMeshAgents).',
+          },
+          {
+            title: 'Overheat System with Event-Driven UI',
+            summary: 'Continuous firing builds heat. When max heat is reached, the weapon locks out and enters a cooldown coroutine. The GunManager exposes a delegate event (HeatIncreased) that the OverheatMeter UI subscribes to. The gun system has no direct reference to UI, keeping the two fully decoupled.',
+          },
+          {
+            title: 'Hitscan + Projectile Dual Firing Modes',
+            summary: 'Each weapon is flagged as hitscan or projectile in its ScriptableObject. Hitscan weapons raycast from the camera and apply damage instantly. Projectile weapons spawn a prefab that moves forward and handles collision via OnTriggerEnter. Both paths feed into the same IDamage and IAmmoEffect pipelines.',
+          },
+          {
+            title: 'Per-Ammo Recoil',
+            summary: 'Each ammo type has its own recoil profile (vertical kick, horizontal kick, gun kickback). On fire, coroutines lerp the camera rotation and gun model position/rotation to create distinct weapon feel per element.',
+          }
+        ]
+      }
+    ],
     contributions: [
-      { 
+      {
             category: 'Core Gameplay & Combat Systems',
             items:
             [
@@ -311,7 +390,7 @@ export const gamesData = {
             'Developed enemy health systems, including enemy health bars and visual feedback on damage.'
             ]
       },
-      { 
+      {
             category: 'Player Interaction & World Systems',
             items:
             [
@@ -328,12 +407,12 @@ export const gamesData = {
             'Implemented a dialogue and voice line manager, supporting multiple voice lines and skip functionality.'
             ]
       },
-      { 
+      {
             category: 'Level Design & World Building',
             items:
             [
             'Responsible for Level 1 in its entirety, including layout, enemy placement, pacing, and environmental storytelling.',
-            'Implemented cutscenes using Unity’s Cinemachine, coordinating animations, camera movements, and audio cues.'
+            'Implemented cutscenes using Unity\'s Cinemachine, coordinating animations, camera movements, and audio cues.'
             ]
       }
     ]
@@ -343,7 +422,7 @@ export const gamesData = {
     title: 'Dr. Malware',
     tech: 'Vulkan, C++, EnTT, IMGUI',
     description: 'A data-oriented arcade game made with Vulkan, EnTT, Gateware, IMGUI to challenge myself into not using a commercial engine.',
-    image: '/images/DrMalware.png',
+    image: '/images/DrMalware.webp',
     stores: null,
     installer: '/downloads/dr-malware-installer.exe',
     installerBadge: '/images/dr-malware-installer-badge.png',
@@ -384,5 +463,4 @@ export const gamesData = {
         }
     ]
 }
-  // Add more games here as needed
 };

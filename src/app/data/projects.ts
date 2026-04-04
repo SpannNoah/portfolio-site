@@ -62,5 +62,4 @@ export const projects: Project[] = [
         lessonsLearned:
         `This project provided valuable experience in working with AAA created systems and tools, as well as adapting to the constraints and capabilities of the Battlefield Portal SDK.`
     }
-    // Add more projects here as needed
 ];
