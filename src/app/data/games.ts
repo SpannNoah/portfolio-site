@@ -44,6 +44,10 @@ export interface GameDetail {
     contributions: {
         category: string;
         items: string[];
+      blogLink?: {
+        href: string;
+        text: string;
+      };
     }[];
     screenshots?: Screenshot[];
     systemBreakdowns?: SystemBreakdown[];

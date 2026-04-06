@@ -60,6 +60,47 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <h2>About this project</h2>
           <p>{project.about}</p>
 
+          {project.sections && project.sections.length > 0 && (
+            <div>
+              {project.sections.map((section, index) => (
+                <div key={index} className="contribution-section">
+                  <h3>{section.heading}</h3>
+                  {section.paragraphs?.map((text, i) => (
+                    <p key={i}>{text}</p>
+                  ))}
+                  {section.bullets && section.bullets.length > 0 && (
+                    <ul>
+                      {section.bullets.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {section.blogLink?.href && (
+                    <a
+                      href={section.blogLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="section-blog-link"
+                    >
+                      {section.blogLink.text}
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {project.keyImpact && project.keyImpact.length > 0 && (
+            <div className="contribution-section">
+              <h3>Key Impact</h3>
+              <ul>
+                {project.keyImpact.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
 
           {project.implementationDetails && (
             <div>

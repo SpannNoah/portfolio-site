@@ -474,6 +474,7 @@ canvas {
    
 .contribution-section {
   margin-top: 2rem;
+  text-align: left;
 }
 
 .contribution-section h3 {
@@ -484,14 +485,35 @@ canvas {
 
 .contribution-section ul {
   list-style: disc;
-  padding-left: 2rem;
+  padding-left: 3rem;
+  margin-top: 0.5rem;
   color: rgba(255, 255, 255, 0.9);
+}
+
+.contribution-section p {
+  text-align: left;
+  padding-left: 0;
 }
 
 .contribution-section li {
   margin-bottom: 0.5rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
+}
+
+.section-blog-link {
+  display: block;
+  width: fit-content;
+  margin: 0.75rem auto 0;
+  color: rgb(110, 193, 228);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.section-blog-link:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 /* =========================

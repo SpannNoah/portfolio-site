@@ -187,6 +187,16 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                   <li key={i}>{item}</li>
                 ))}
               </ul>
+              {section.blogLink?.href && (
+                <a
+                  href={section.blogLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="section-blog-link"
+                >
+                  {section.blogLink.text}
+                </a>
+              )}
             </div>
           ))}
         </div>
