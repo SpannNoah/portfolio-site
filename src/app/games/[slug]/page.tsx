@@ -4,30 +4,42 @@ import { gamesData } from '../../data/games';
 import ScreenshotGallery from '../../components/ScreenshotGallery';
 import SystemBreakdownSection from '../../components/SystemBreakdown';
 
-const StoreBadge = ({ storeType, storeLink }: { storeType: 'appstore' | 'itch' | 'steam' | 'googleplay', storeLink: string }) => {
+const StoreBadge = ({
+  storeType,
+  storeLink
+}: {
+  storeType: 'appstore' | 'itch' | 'steam' | 'googleplay' | 'github';
+  storeLink: string;
+}) => {
   const badges = {
     appstore: {
-      src: '/images/appstore-badge.png',
-      alt: 'Download on the App Store',
+      src: '/images/appstore-badge.webp',
+      label: 'Download on the App Store',
       width: 135,
       height: 40
     },
     itch: {
-      src: '/images/itch-badge.png',
-      alt: 'Available on itch.io',
+      src: '/images/itch-badge.webp',
+      label: 'Available on itch.io',
       width: 164,
       height: 40
     },
     steam: {
-      src: '/images/steam-badge.png',
-      alt: 'Available on Steam',
+      src: '/images/steam-badge.webp',
+      label: 'Available on Steam',
       width: 154,
       height: 40
     },
     googleplay: {
-      src: '/images/googleplay-badge.png',
-      alt: 'Get it on Google Play',
+      src: '/images/googleplay-badge.webp',
+      label: 'Get it on Google Play',
       width: 155,
+      height: 40
+    },
+    github: {
+      src: '/images/github-badge.webp',
+      label: 'View on GitHub',
+      width: 150,
       height: 40
     }
   };
@@ -35,13 +47,20 @@ const StoreBadge = ({ storeType, storeLink }: { storeType: 'appstore' | 'itch' |
   const badge = badges[storeType];
 
   return (
-    <a href={storeLink} target="_blank" rel="noopener noreferrer" className="store-badge-link">
+    <a
+      href={storeLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="store-badge-link"
+      aria-label={badge.label}
+    >
+      <span className="store-badge-label">{badge.label}</span>
       <img
         src={badge.src}
-        alt={badge.alt}
+        alt={badge.label}
         width={badge.width}
         height={badge.height}
-        className="store-badge"
+        className={`store-badge store-badge--${storeType}`}
         loading="lazy"
         decoding="async"
       />
@@ -126,7 +145,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
             </div>
           </div>
         )}
-
+        <div className="store-badges-container">
         {game.stores && game.stores.length > 0 && (
           <div className="store-badges-wrapper">
             {game.stores.map((store, index) => (
@@ -134,7 +153,6 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
             ))}
           </div>
         )}
-
         {game.installer && (
           <div className="installer-wrapper">
             <a href={game.installer} className="installer-badge-link" download>
@@ -151,6 +169,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
             </a>
           </div>
         )}
+        </div>
 
         <div className="detail-content">
           <h2>About this game</h2>

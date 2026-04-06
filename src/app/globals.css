@@ -253,14 +253,30 @@ canvas {
   display: flex;
   gap: 1rem;
   align-items: center;
+  text-align: center;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 0;
   flex-wrap: wrap;
 }
 
 .store-badge-link {
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   transition: transform 0.2s ease, opacity 0.2s ease;
+  color: rgb(110, 193, 228);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.store-badge-label {
+  margin: 0;
+  color: rgb(110, 193, 228);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .store-badge-link:hover {
@@ -268,9 +284,25 @@ canvas {
   opacity: 0.9;
 }
 
+.store-badges-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+
 .store-badge {
-  height: auto;
+  width: 164px;
+  height: 40px;
+  object-fit: contain;
   display: block;
+}
+
+.store-badge--github {
+  filter: invert(1);
 }
 
 .store-link-wrapper {
@@ -302,12 +334,16 @@ canvas {
    Installer Badges
    ========================= */
 .installer-wrapper {
-  margin: 2rem 0;
+  margin: 0;
   text-align: center;
+  flex: 0 0 auto;
 }
 
 .installer-badge-link {
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   transition: transform 0.2s ease, opacity 0.2s ease;
   color: rgb(110, 193, 228);
   text-decoration: none;
@@ -320,14 +356,16 @@ canvas {
 }
 
 .installer-badge-link h3 {
-  margin: 0 0 0.75rem 0;
+  margin: 0;
   color: rgb(110, 193, 228);
   font-size: 1.25rem;
   font-weight: 600;
 }
 
 .installer-badge {
-  height: auto;
+  width: 164px;
+  height: 40px;
+  object-fit: contain;
   display: block;
 }
 
@@ -462,21 +500,6 @@ canvas {
 .store-badge-wrapper {
   margin: 2rem 0;
   text-align: center;
-}
-
-.store-badge-link {
-  display: inline-block;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.store-badge-link:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-.store-badge {
-  height: auto;
-  display: block;
 }
 
 /* =========================

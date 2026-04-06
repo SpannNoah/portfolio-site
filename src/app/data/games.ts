@@ -30,7 +30,7 @@ export interface GameDetail {
     tech: string;
     description: string;
     image: string;
-    stores: { type: 'appstore' | 'itch' | 'steam' | 'googleplay'; link: string }[] | null;
+    stores: { type: 'appstore' | 'itch' | 'steam' | 'googleplay' | 'github'; link: string }[] | null;
     installer: string | null;
     installerBadge: string | null;
     fullDescription: string;
@@ -321,7 +321,8 @@ export const gamesData: Record<string, GameDetail> = {
     description: "A first-person shooter focused on elemental weapons and fast-paced combat.",
     image: '/images/ForgottenArsenalBanner.webp',
     stores: [
-      { type: 'itch' as const, link: 'https://noahspann.itch.io/forgotten-arsenal' }
+      { type: 'itch' as const, link: 'https://noahspann.itch.io/forgotten-arsenal' },
+      { type: 'github' as const, link: 'https://github.com/SpannNoah/fps-prototype-pp2' }
     ],
     installer: null,
     installerBadge: null,
@@ -423,7 +424,7 @@ export const gamesData: Record<string, GameDetail> = {
     tech: 'Vulkan, C++, EnTT, IMGUI',
     description: 'A data-oriented arcade game made with Vulkan, EnTT, Gateware, IMGUI to challenge myself into not using a commercial engine.',
     image: '/images/DrMalware.webp',
-    stores: null,
+    stores: [ {type: 'github' as const, link: 'https://github.com/SpannNoah/DrMalware' } ],
     installer: '/downloads/dr-malware-installer.exe',
     installerBadge: '/images/dr-malware-installer-badge.png',
     fullDescription: 'Dr. Malware is a fast-paced arcade game where you play as a doctor fighting against malicious viruses. Built entirely from scratch using Vulkan for rendering, EnTT for entity component system architecture, and IMGUI for menus and text. This project challenged me to work without a commercial engine and implement core game systems from the ground up.',
