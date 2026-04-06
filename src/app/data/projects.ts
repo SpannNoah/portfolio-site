@@ -17,6 +17,7 @@ export interface Project {
     implementationDetails?: string;
     lessonsLearned?: string;
     link?: string;
+    stores?: { type: 'github' | 'gitlab'; link: string }[];
     sections?: ProjectSection[];
     keyImpact?: string[];
 }
@@ -27,7 +28,7 @@ export const projects: Project[] = [
         image: '/images/GatewareLogo.webp',
         slug: 'gateware-open-source',
         technologies: ['C++', 'Vulkan', 'Unit Testing', 'Cross-Platform'],
-        link: "https://gitlab.com/gateware-development/gateware",
+        stores: [{ type: 'gitlab', link: 'https://gitlab.com/gateware-development/gateware' }],
         about:
             'Contributed to the open-source Gateware project, working across engine-level math systems, collision detection, and Vulkan graphics debugging. This work emphasized low-level problem solving, cross-platform correctness, and test-driven development.',
         sections: [
@@ -78,7 +79,7 @@ export const projects: Project[] = [
         image: '/images/RobocodeThumbnail.png',
         slug: 'robocode',
         technologies: ['Java', 'Robocode API'],
-        link: 'https://github.com/SpannNoah/rulebased-robocode-ai',
+        stores: [{ type: 'github', link: 'https://github.com/SpannNoah/rulebased-robocode-ai' }],
         about: 
         `This project is an implementation of a rule-based system in Java, based on the framework
         described in Artificial Intelligence for Games, 2nd Edition by Ian Millington and John Funge.
@@ -114,6 +115,7 @@ export const projects: Project[] = [
         slug: 'battlefield6mod',
         technologies: ['Godot', 'TypeScript', 'Battlefield Portal'],
         link: 'https://www.ea.com/games/battlefield/battlefield-6/portal/buy/creation/3033a550-aeb5-11f0-b654-be13237bdf8a',
+        stores: [{ type: 'github', link: 'https://github.com/SpannNoah/battlefield-portal-gunfight' }],
         about: 
         `A custom game mode for Battlefield 6 using the newly released SDK for Battlefield Portal.
         This mode is a recreation of my favorite multiplayer mode from Call of Duty: Modern Warfare

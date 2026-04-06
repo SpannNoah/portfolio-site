@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { projects } from '../../data/projects';
+import StoreBadge from '../../components/StoreBadge';
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -43,12 +44,22 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         )}
 
+        {project.stores && project.stores.length > 0 && (
+          <div className="store-badges-container">
+            <div className="store-badges-wrapper">
+              {project.stores.map((store, index) => (
+                <StoreBadge key={index} storeType={store.type} storeLink={store.link} />
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="detail-content">
           {project.link && (
             <div className="installer-wrapper">
-              <a 
-                href={project.link} 
-                target="_blank" 
+              <a
+                href={project.link}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="installer-badge-link"
               >
